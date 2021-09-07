@@ -11,9 +11,7 @@
 | last_name          | string | null: false               |
 | first_name_kana    | string | null: false               |
 | last_name_kana     | string | null: false               |
-| birthday_year      | data   | null: false               |
-| birthday_moon      | data   | null: false               |
-| birthday_day       | data   | null: false               |
+| birthday           | data   | null: false               |
 
 ## Association
 
@@ -22,17 +20,17 @@
 
 ## items table
 
-| Column        | type       | Options           |
-|---------------|------------|-------------------|
-| title         | string     | null: false       |
-| explanation   | string     | null: false       |
-| category      | string     | null: false       |
-| condition     | string     | null: false       |
-| postage       | string     | null: false       |
-| shipping_area | string     | null: false       |
-| lead_time     | string     | null: false       |
-| price         | string     | null: false       |
-| user          | references | foreign_key: true |
+| Column           | type       | Options                        |
+|------------------|------------|--------------------------------|
+| title            | string     | null: false                    |
+| explanation      | text       | null: false                    |
+| category_id      | integer    | null: false                    |
+| condition_id     | integer    | null: false                    |
+| postage_id       | integer    | null: false                    |
+| prefectures_id   | integer    | null: false                    |
+| lead_time_id     | integer    | null: false                    |
+| price            | integer    | null: false                    |
+| user             | references | null: false, foreign_key: true |
 
 ## Association
 
@@ -41,10 +39,10 @@
 
 ## orders table
 
-| Column | type       | Options           |
-|--------|------------|-------------------|
-|user    | references | foreign_key: true |
-|item    | references | foreign_key: true |
+| Column | type       | Options                        |
+|--------|------------|--------------------------------|
+|user    | references | null: false, foreign_key: true |
+|item    | references | null: false, foreign_key: true |
 
 ## Association
 
@@ -54,15 +52,15 @@
 
 ## shipping_informations table
 
-| Column           | type       | Options           |
-|------------------|------------|-------------------|
-| postal_code      | string     | null: false       |
-| prefectures      | string     | null: false       |
-| municipalities   | string     | null: false       |
-| house_number     | string     | null: false       |
-| building_name    | string     | null: false       |
-| telephone_number | string     | null: false       |
-| order            | references | foreign_key: true |
+| Column           | type       | Options                        |
+|------------------|------------|--------------------------------|
+| postal_code      | string     | null: false                    |
+| prefectures_id   | integer    | null: false                    |
+| municipalities   | string     | null: false                    |
+| house_number     | string     | null: false                    |
+| building_name    | string     |                                |
+| telephone_number | string     | null: false                    |
+| order            | references | null: false, foreign_key: true |
 
 ## Association
 
