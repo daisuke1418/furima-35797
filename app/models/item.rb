@@ -1,22 +1,22 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category
-  belongs_to :condition
-  belongs_to :postage
-  belongs_to :prefecture
-  belongs_to :leadtime
+  belongs_to_active_hash :category
+  belongs_to_active_hash :condition
+  belongs_to_active_hash :postage
+  belongs_to_active_hash :prefecture
+  belongs_to_active_hash :LeadTime
 
-  with_options numericality: { other_than: 1 , messages: "can't be blank"} do
-    validates :category_id
-    validates :condition_id
-    validates :postage_id
-    validates :prefecture_id
-    validates :lead_time_id
-  end
+  validates :category_id, numericality: { other_than: 1 }
+  validates :condition_id, numericality: { other_than: 1 }
+  validates :postage_id, numericality: { other_than: 1 }
+  validates :prefecture_id, numericality: { other_than: 1 }
+  validates :lead_time_id, numericality: { other_than: 1 }
+
   with_options presence: true do
     validates :title
     validates :explanation
-    validates :price
+    validates :price,  numericality: {only_integer: true, greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is invalid"}
+    validates :image
   end
 
   def was_attached?
