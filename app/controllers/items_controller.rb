@@ -1,5 +1,5 @@
 class ItemsController < ApplicationController
-  before_action :authenticate_user!, if: :use_auth?
+  before_action :authenticate_user!, only: [:new]
 
   def index
     @items = Item.order("created_at DESC")
@@ -24,9 +24,4 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:title, :explanation, :category_id, :condition_id, :postage_id, :prefecture_id, :lead_time_id, :price, :image).merge(user_id: current_user.id)
   end
 
-  def use_auth?
-    unless controller_name == 'items' && action_name == 'index'
-      true
-    end
-  end
 end

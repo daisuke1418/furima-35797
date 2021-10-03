@@ -19,10 +19,6 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  def was_attached?
-    self.image.attached?
-  end
-
   belongs_to :user
   has_one_attached :image
 
