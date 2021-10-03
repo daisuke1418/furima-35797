@@ -1,6 +1,6 @@
 <mxfile host="65bd71144e">
     <diagram id="Jr3M5P6OJexd3hhRypKy" name="ページ1">
-        <mxGraphModel dx="1176" dy="907" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="672" dy="228" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
@@ -264,8 +264,8 @@
                 <mxCell id="173" value="has_many :items&lt;br&gt;has_many :orders" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="160" y="20" width="120" height="40" as="geometry"/>
                 </mxCell>
-                <mxCell id="174" value="belongs_to :iuser&lt;br&gt;has_one :order" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
-                    <mxGeometry x="530" y="20" width="120" height="40" as="geometry"/>
+                <mxCell id="174" value="belongs_to :iuser&lt;br&gt;has_one :order&lt;br&gt;has_one_attached :image" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
+                    <mxGeometry x="530" y="10" width="150" height="50" as="geometry"/>
                 </mxCell>
                 <mxCell id="175" value="belongs_to :iuser&lt;br&gt;belongs_to :item&lt;br&gt;has_one :shipping_infomation" style="rounded=0;whiteSpace=wrap;html=1;align=left;" parent="1" vertex="1">
                     <mxGeometry x="530" y="410" width="170" height="60" as="geometry"/>
