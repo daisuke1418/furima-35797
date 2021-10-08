@@ -1,7 +1,8 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
-  before_action :set_item, only: [:show, :edit, :update]
-  before_action :contributor_confirmation, only: :destroy
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
+  before_action :contributor_confirmation, only: [:edit, :update, :destroy]
+  
   def index
     @items = Item.all.order("created_at DESC")
   end
@@ -35,11 +36,10 @@ class ItemsController < ApplicationController
   end
 
   def destroy
-    @item = Item.find(params[:id])
     if @item.destroy
       redirect_to root_path
     else
-      redirect_to root_path
+      redirect_to item_path
     end
   end
 
@@ -54,7 +54,6 @@ class ItemsController < ApplicationController
   end
 
   def contributor_confirmation
-    @item = Item.find(params[:id])
-    redirect_to root_path unless current_user == @item.user
+    redirect_to item_path unless current_user == @item.user
   end
 end
