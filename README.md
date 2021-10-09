@@ -49,9 +49,9 @@
 
 * belongs_to :user
 * belongs_to :item
-* has_one :shipping_information
+* has_one :destination
 
-## shipping_informations table
+## destinations table
 
 | Column           | type       | Options                        |
 |------------------|------------|--------------------------------|
