@@ -10,7 +10,7 @@ class OrderDestination
   validates :prefecture, numericality: {other_than: 0, message: "can't be blank"}
 
   def save
-    @order = Order.create(user_id: user_id, item_id: item_id)
+    order = Order.create(user_id: user_id, item_id: item_id)
     destionation.create(postal_code: postal_code, prefecture: prefecture, municipalites: municipalities, house_number: house_number, building_name: building_name, order_id: order.id)
   end
 end
