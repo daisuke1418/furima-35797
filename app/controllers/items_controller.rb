@@ -24,9 +24,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    if @item.order
-      redirect_to root_path
-    end
   end
 
   def update
@@ -57,5 +54,8 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     redirect_to item_path unless current_user == @item.user
+    if @item.order
+      redirect_to root_path
+    end
   end
 end
