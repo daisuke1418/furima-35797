@@ -1,18 +1,17 @@
 class OrdersController < ApplicationController
   before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :set_item, only: [:index, :create]
+  before_action :block_entry, only: [:index, :new, :create]
+  before_action :set_order, only: [:index, :new]
 
   def index
-    @item = Item.find(params[:item_id])
-    @order_destination = OrderDestination.new
   end
 
   def new
-    @order_destination = OrderDestination.new
   end
 
   def create
     @order_destination = OrderDestination.new(order_params)
-    @item = Item.find(params[:item_id])
     if @order_destination.valid?
       pay_item
       @order_destination.save
@@ -36,5 +35,19 @@ class OrdersController < ApplicationController
       card: order_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
+
+  def block_entry
+    if @item.order
+      redirect_to root_path
+    end
+  end
+
+  def set_order
+    @order_destination = OrderDestination.new
   end
 end
