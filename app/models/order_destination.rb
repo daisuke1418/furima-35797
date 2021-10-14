@@ -3,7 +3,7 @@ class OrderDestination
   attr_accessor :postal_code, :prefecture_id, :municipalities, :house_number, :building_name, :telephone_number, :user_id, :item_id, :token
 
   with_options presence: true do
-    validates :user_id, :item_id, :municipalities, :house_number
+    validates :user_id, :item_id, :municipalities, :house_number, :token
     validates :postal_code, format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
     validates :telephone_number, format: {with: /\A[0-9]{10,11}\z/, message: "is invalid. Input only number"}
   end
