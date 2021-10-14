@@ -54,7 +54,7 @@ class ItemsController < ApplicationController
 
   def contributor_confirmation
     redirect_to item_path unless current_user == @item.user
-    if @item.order
+    if @item.order != nil
       redirect_to root_path
     end
   end

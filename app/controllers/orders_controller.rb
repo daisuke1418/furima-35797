@@ -38,7 +38,7 @@ class OrdersController < ApplicationController
   end
 
   def block_entry
-    if @item.order
+    if @item.order != nil
       redirect_to root_path
     end
   end
