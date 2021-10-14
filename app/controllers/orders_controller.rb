@@ -1,13 +1,10 @@
 class OrdersController < ApplicationController
-  before_action :authenticate_user!, only: [:index, :new, :create]
+  before_action :authenticate_user!, only: [:index, :create]
   before_action :set_item, only: [:index, :create]
-  before_action :block_entry, only: [:index, :new, :create]
-  before_action :set_order, only: [:index, :new]
+  before_action :block_entry, only: [:index, :create]
 
   def index
-  end
-
-  def new
+    @order_destination = OrderDestination.new
   end
 
   def create
@@ -15,7 +12,6 @@ class OrdersController < ApplicationController
     if @order_destination.valid?
       pay_item
       @order_destination.save
-      @item.save
       redirect_to root_path
     else
       render :index
@@ -45,9 +41,5 @@ class OrdersController < ApplicationController
     if @item.order
       redirect_to root_path
     end
-  end
-
-  def set_order
-    @order_destination = OrderDestination.new
   end
 end
