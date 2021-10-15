@@ -19,8 +19,8 @@ class Item < ApplicationRecord
     validates :image
   end
 
-  belongs_to :user
-  has_one_attached :image
-  has_one :order
+   belongs_to :user
+   has_one_attached :image
+   has_one :order
 
 end
