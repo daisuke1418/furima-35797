@@ -43,7 +43,7 @@ class OrdersController < ApplicationController
     end
 
     if current_user == @item.user
-      redirect_to root_path
+      root_path
     end
   end
 end
