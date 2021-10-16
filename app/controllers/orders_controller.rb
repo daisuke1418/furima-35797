@@ -38,12 +38,8 @@ class OrdersController < ApplicationController
   end
 
   def block_entry
-    if @item.order != nil
+    if @item.order != nil || current_user == @item.user
       redirect_to root_path
-    end
-
-    if current_user == @item.user
-      root_path
     end
   end
 end
